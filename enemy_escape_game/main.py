@@ -18,7 +18,7 @@ from pygame.locals import (
 pygame.mixer.init()
 
 pygame.mixer.music.load('enemy_escape_game/assets/game_sound.mp3')
-pygame.mixer.music.play(loops=-1)
+pygame.mixer.music.play(loops=-1)  #for continuous playing of music
 
 pygame.init() #initializing pygame
 
@@ -51,7 +51,7 @@ class Cloud(pygame.sprite.Sprite):
             center=(random.randint(SCREEN_WIDTH+20, SCREEN_HEIGHT+100),
             (random.randint(0, SCREEN_HEIGHT))
             )
-        )
+        )  #updating rect to be random location
 
     def update(self):
         self.rect.move_ip(-5,0)
@@ -150,22 +150,8 @@ while running:
             clouds.add(new_cloud)
             all_sprites.add(new_cloud)
 
-    #white background for screen
+    #light blue background for screen
     screen.fill((135, 206, 250))
-
-    #creates a surface (rectangular object)and params are length and width
-    surf = pygame.Surface((50, 50))
-
-    surf.fill((0,0,0)) #seperate color for surface then screen
-    rect = surf.get_rect()
-
-    surf_center = (
-        (SCREEN_WIDTH/2),
-        (SCREEN_HEIGHT/2)
-    )
-
-
-    # screen.blit(player.surf, player.rect) #places one surface on another; 2nd argument here is the position
 
     pressed_keys = pygame.key.get_pressed() #get set of keys pressed and check for user input
     player.update(pressed_keys)
